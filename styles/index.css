@@ -1,19 +1,37 @@
 body {
     margin: 30px;
 }
+
 #container-controles {
     display: flex;
 }
+
 #btnPlay {
     height: 40px;
     width: 63px;
     background-color: transparent;
     border: none;
 }
+
 #imgBtnPlay {
     height: 100%;
 }
+
 #reguladorVelocidad {
     width: 200px;
     margin-left: 18px;
+}
+
+#zonaMovimiento {
+    margin-top: 20px;
+    background-color: brown;
+    margin-left: 22px;
+}
+
+#cuerpoMovil {
+    width: 104px;
+    height: 55px;
+    background-color: blue;
+    transition: all 0.5s linear 0s;
+    margin-left: 0px;
 }
