@@ -8,12 +8,4 @@ export class ReguladorDeVelocidad {
         this.#vista = new VistaReguladorDeVelocidad();
         this.#objetoMovil = objetoMovil
     }
-
-    habilitarDeslizador() {
-        this.#vista.habilitarDeslizador();
-    }
-
-    deshabilitarDeslizador() {
-        this.#vista.deshabilitarDeslizador();
-    }
 }
