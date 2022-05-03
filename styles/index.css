@@ -1,0 +1,17 @@
+body {
+    margin: 30px;
+}
+#container-controles {
+    display: flex;
+}
+#btnPlay {
+    height: 40px;
+    width: 63px;
+}
+#imgBtnPlay {
+    height: 100%;
+}
+#reguladorVelocidad {
+    width: 200px;
+    margin-left: 30px;
+}
