@@ -1,20 +1,19 @@
 export class VistaObjetoMovil {
     #nodo
-    #marginIzqContenedor
-    #marginIDerContenedor
-    #anchoObjeto
+    marginIzqContenedor = 52;
+    marginDerContenedor = 30;
+    anchoObjeto = 55;
 
     constructor() {
         this.#nodo = document.querySelector('#cuerpoMovil');
-        
     }
 
     obtenerEspacioIzqBordePantalla() {
-        this.#nodo.getBoundingClientRect().left;
+        return this.#nodo.getBoundingClientRect().left;
     }
 
     obtenerEspacioDerBordePantalla() {
-        this.#nodo.getBoundingClientRect().right;
+        return (screen.width - this.#nodo.getBoundingClientRect().left);
     }
 
     obtenerMarginIzqObjeto() {
@@ -27,6 +26,6 @@ export class VistaObjetoMovil {
     }
 
     cambiarMarginIzqObjeto(nuevoMargen) {
-        this.#nodo.style.marginLeft = `${marginLeft}px`;
+        this.#nodo.style.marginLeft = `${nuevoMargen}px`;
     }
 }

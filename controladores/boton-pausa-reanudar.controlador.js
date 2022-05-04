@@ -2,37 +2,37 @@ import { VistaBotonPausaReanudar } from '../vistas/boton-pausa-reanudar.vista.js
 
 export class BotonPausaReanudar {
     #vista
-    #enPlay = true;
+    #enEjecucion
     #objetoMovil
 
     constructor(objetoMovil) {
         this.#objetoMovil = objetoMovil;
         this.#vista = new VistaBotonPausaReanudar(this.#callbackOnClickBtn);
+        this.#enEjecucion = false;
     }
 
     #pausar() {
-        this.#enPlay = false;
-        this.#cambiarIcono();
+        this.#enEjecucion = false;
     }
 
     #reanudar() {
-        this.#enPlay = true;
-        this.#cambiarIcono();
+        this.#enEjecucion = true;
     }
 
     #cambiarIcono() {
-        if (this.#enPlay) {
-            this.#vista.cambiarIcono(true);
-        } else {
+        if (this.#enEjecucion) {
             this.#vista.cambiarIcono(false);
+        } else {
+            this.#vista.cambiarIcono(true);
         }
     }
 
     #callbackOnClickBtn = cb => {
-        if (this.#enPlay) {
+        if (this.#enEjecucion) {
             this.#pausar();
         } else {
             this.#reanudar();
         }
+        this.#cambiarIcono();
     }
 }
