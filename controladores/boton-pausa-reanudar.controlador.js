@@ -13,10 +13,12 @@ export class BotonPausaReanudar {
 
     #pausar() {
         this.#enEjecucion = false;
+        this.#objetoMovil.detenerMovimiento();
     }
 
     #reanudar() {
         this.#enEjecucion = true;
+        this.#objetoMovil.reanudarMovimiento();
     }
 
     #cambiarIcono() {

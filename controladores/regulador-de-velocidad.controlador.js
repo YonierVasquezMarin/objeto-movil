@@ -3,22 +3,30 @@ import { VistaReguladorDeVelocidad } from '../vistas/regulador-de-velocidad.vist
 export class ReguladorDeVelocidad {
     #vista
     #objetoMovil
+    #delaysList
 
     constructor(objetoMovil) {
-        this.#vista = new VistaReguladorDeVelocidad(this.#cambiarDelayObjeto);
         this.#objetoMovil = objetoMovil
+        this.#delaysList = [];
+        this.#cargarListaDelays();
+        this.#vista = new VistaReguladorDeVelocidad(this.#cambiarDelayObjeto);
+    }
+
+    #cargarListaDelays() {
+        const TIEMPO_MAXIMO = 300;
+        const FRAGMENTOS = 20;
+        let j = TIEMPO_MAXIMO/FRAGMENTOS;
+
+        for (let i = 1; i <= 20; i++) {
+            this.#delaysList.push(j * i);
+        }
+
+        this.#objetoMovil.delayMovimiento = this.#delaysList[this.#delaysList.length-1];
     }
 
     #cambiarDelayObjeto = cb => {
-        const delays = [
-            75, 150, 225, 300, 375, 450, 525, 600, 675, 750,
-            825, 900, 975, 1050, 1125, 1200, 1275, 1350, 1425, 1500
-        ];
-
-        let delayObjeto = 1500;
-
         const valorDeslizador = this.#vista.obtenerValorDeslizador();
-        delayObjeto = delays[delays.length - valorDeslizador];
+        const delayObjeto = this.#delaysList[this.#delaysList.length - valorDeslizador];
 
         this.#objetoMovil.delayMovimiento = delayObjeto;
     }

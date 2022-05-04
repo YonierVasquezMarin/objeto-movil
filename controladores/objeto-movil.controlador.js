@@ -17,8 +17,6 @@ export class ObjetoMovil {
         this.#enMovimiento = false;
         this.#pixelsPorTiempo = 10;
         this.#distanciaMinimaAceptada = 100;
-        this.delayMovimiento = 100;
-        // this.#moverObjeto();
     }
 
     detenerMovimiento() {
@@ -27,6 +25,7 @@ export class ObjetoMovil {
 
     reanudarMovimiento() {
         this.#enMovimiento = true;
+        this.#moverObjeto();
     }
 
     #calcularDistanciaBordesContenedor() {
@@ -57,10 +56,15 @@ export class ObjetoMovil {
     }
 
     #moverObjeto() {
-        setInterval(cb => {
+        let repetirAccion = cb => {
             this.#calcularDistanciaBordesContenedor();
             this.#calcularDireccion();
             this.#cambiarMargenIzquirdo();
-        }, this.delayMovimiento);
+
+            if (this.#enMovimiento) {
+                setTimeout(repetirAccion, this.delayMovimiento);
+            }
+        }
+        repetirAccion();
     }
 }
